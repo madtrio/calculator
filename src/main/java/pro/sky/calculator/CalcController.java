@@ -14,6 +14,7 @@ public class CalcController {
 
     @GetMapping(path = "/calculator")
     public String answerCalc() {
+        System.out.println("Добро пожаловать в калькулятор!");
         return calcService.answerCalc();
     }
 
