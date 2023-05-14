@@ -1,8 +1,10 @@
-package pro.sky.calculator;
+package pro.sky.calculator.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import pro.sky.calculator.exception.DivByZeroException;
+import pro.sky.calculator.service.CalcService;
 
 @RestController
 public class CalcController {
@@ -43,12 +45,7 @@ public class CalcController {
     }
 
     private String buildView(Integer a, Integer b, Number result, String operation) {
-        if (a == null || b == null) {
-            return "Не передан один из параметров";
-        }
-        if ("/".equals(operation) && b == 0) {
-            return "На 0 делить нельзя";
-        }
+
         return a + " " + operation + " " + b + " = " + result;
 
     }

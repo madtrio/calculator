@@ -1,7 +1,8 @@
-package pro.sky.calculator;
+package pro.sky.calculator.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
+import pro.sky.calculator.exception.DivByZeroException;
 
 @Service
 public class CalcService {
@@ -9,19 +10,22 @@ public class CalcService {
         return "Добро пожаловать в калькулятор";
     }
 
-    public int plus(int a, int b) {
+    public static int plus(int a, int b) {
         return a + b;
     }
 
-    public int minus(int a, int b) {
+    public static int minus(int a, int b) {
         return a - b;
     }
 
-    public double divide(int a, int b) {
+    public static double divide(int a, int b) {
+        if (b == 0 ) {
+            throw new DivByZeroException();
+        }
         return a / (double) b;
     }
 
-    public int multiply(int a, int b) {
+    public static int multiply(int a, int b) {
         return a * b;
     }
 }
